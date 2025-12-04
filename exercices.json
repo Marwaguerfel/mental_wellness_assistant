@@ -1,0 +1,247 @@
+[
+  {
+    "_id": "breathing-1",
+    "title": "Box Breathing (4–4–4–4)",
+    "type": "breathing",
+    "duration_minutes": 5,
+    "difficulty": "easy",
+    "tags": ["anxiety", "panic", "focus", "calm"],
+    "description": "A paced breathing technique used to reset the nervous system and regain control during anxiety or stress.",
+    "steps": [
+      "Sit comfortably with your back supported.",
+      "Inhale gently through your nose for 4 seconds.",
+      "Hold your breath for 4 seconds.",
+      "Exhale slowly through your mouth for 4 seconds.",
+      "Pause for 4 seconds before the next inhale.",
+      "Repeat for 4–6 cycles."
+    ]
+  },
+  {
+    "_id": "breathing-2",
+    "title": "4–7–8 Relaxing Breath",
+    "type": "breathing",
+    "duration_minutes": 4,
+    "difficulty": "easy",
+    "tags": ["sleep", "anxiety", "relaxation"],
+    "description": "A powerful breathing technique to slow the heart rate and prepare the body for deep relaxation.",
+    "steps": [
+      "Inhale quietly through your nose for 4 seconds.",
+      "Hold the breath for 7 seconds.",
+      "Exhale with a soft whooshing sound for 8 seconds.",
+      "Repeat 4 cycles.",
+      "Use before sleep or during high stress."
+    ]
+  },
+  {
+    "_id": "breathing-3",
+    "title": "Coherent Breathing",
+    "type": "breathing",
+    "duration_minutes": 6,
+    "difficulty": "easy",
+    "tags": ["stress", "calm", "balance"],
+    "description": "This method helps balance the autonomic nervous system by breathing at 5–6 breaths per minute.",
+    "steps": [
+      "Sit upright or lie down.",
+      "Inhale slowly for 5 seconds.",
+      "Exhale slowly for 5 seconds.",
+      "Keep a steady rhythm without forcing the breath.",
+      "Repeat for 5 minutes."
+    ]
+  },
+  {
+    "_id": "breathing-4",
+    "title": "Diaphragmatic Belly Breathing",
+    "type": "breathing",
+    "duration_minutes": 7,
+    "difficulty": "easy",
+    "tags": ["stress", "tension", "relaxation"],
+    "description": "A deep breathing exercise that reduces physical tension and stimulates the vagus nerve.",
+    "steps": [
+      "Place one hand on your belly and the other on your chest.",
+      "Inhale through your nose, letting your belly rise.",
+      "Exhale slowly through pursed lips while the belly falls.",
+      "Avoid lifting your chest.",
+      "Continue for 5–7 minutes."
+    ]
+  },
+  {
+    "_id": "breathing-5",
+    "title": "Alternate Nostril Breathing",
+    "type": "breathing",
+    "duration_minutes": 5,
+    "difficulty": "medium",
+    "tags": ["anxiety", "balance", "focus"],
+    "description": "A yoga-based breathing method to stabilize emotions and improve mental clarity.",
+    "steps": [
+      "Sit comfortably and relax your shoulders.",
+      "Close your right nostril with your thumb.",
+      "Inhale through the left nostril.",
+      "Switch nostrils using your ring finger.",
+      "Exhale through the right nostril.",
+      "Repeat alternating sides."
+    ]
+  },
+
+  {
+    "_id": "grounding-1",
+    "title": "5–4–3–2–1 Sensory Grounding",
+    "type": "grounding",
+    "duration_minutes": 7,
+    "difficulty": "easy",
+    "tags": ["anxiety", "dissociation", "panic"],
+    "description": "A grounding technique using your senses to reconnect to the present moment.",
+    "steps": [
+      "Name 5 things you can see.",
+      "Name 4 things you can physically feel.",
+      "Name 3 things you can hear.",
+      "Name 2 things you can smell or remember smelling.",
+      "Name 1 thing you can taste or imagine tasting.",
+      "Take a deep breath and notice the shift."
+    ]
+  },
+  {
+    "_id": "grounding-2",
+    "title": "Temperature Change Grounding",
+    "type": "grounding",
+    "duration_minutes": 2,
+    "difficulty": "easy",
+    "tags": ["panic", "stress", "shock"],
+    "description": "Using temperature change to interrupt panic or dissociation.",
+    "steps": [
+      "Hold something cold (ice cube, cold bottle).",
+      "Focus on the sensation for 30 seconds.",
+      "Name the texture and temperature.",
+      "Switch hands if needed.",
+      "Repeat until you feel more present."
+    ]
+  },
+  {
+    "_id": "grounding-3",
+    "title": "Counting Down from 20",
+    "type": "grounding",
+    "duration_minutes": 3,
+    "difficulty": "easy",
+    "tags": ["panic", "racing thoughts"],
+    "description": "A cognitive grounding technique to calm fast or intrusive thoughts.",
+    "steps": [
+      "Start at 20.",
+      "Count backward slowly.",
+      "If you lose track, restart.",
+      "Focus on numbers, not emotions.",
+      "Stop once breathing slows."
+    ]
+  },
+  {
+    "_id": "grounding-4",
+    "title": "Feet-on-the-Floor Technique",
+    "type": "grounding",
+    "duration_minutes": 2,
+    "difficulty": "easy",
+    "tags": ["dissociation", "panic", "presence"],
+    "description": "A quick grounding exercise that centers attention on physical sensations.",
+    "steps": [
+      "Sit or stand with both feet on the ground.",
+      "Press your heels gently into the floor.",
+      "Feel the texture and pressure.",
+      "Notice your weight shifting.",
+      "Take a slow breath."
+    ]
+  },
+  {
+    "_id": "grounding-5",
+    "title": "Object Focus Grounding",
+    "type": "grounding",
+    "duration_minutes": 3,
+    "difficulty": "easy",
+    "tags": ["anxiety", "dissociation"],
+    "description": "A grounding practice by focusing on a single nearby object.",
+    "steps": [
+      "Pick any object near you.",
+      "Describe its color and shape.",
+      "Describe its texture and temperature.",
+      "Describe its purpose.",
+      "Keep your mind on the object for 1–2 minutes."
+    ]
+  },
+
+  {
+    "_id": "journaling-1",
+    "title": "Evening Reflection Journaling",
+    "type": "journaling",
+    "duration_minutes": 10,
+    "difficulty": "medium",
+    "tags": ["sleep", "reflection", "stress"],
+    "description": "A calming routine to process your day and prepare your mind for rest.",
+    "steps": [
+      "Write down three events from today.",
+      "Note how each event made you feel.",
+      "Write one thing you're grateful for.",
+      "Write one thing you want to release.",
+      "Finish with a self-kind sentence."
+    ]
+  },
+  {
+    "_id": "journaling-2",
+    "title": "Thought Dump Journaling",
+    "type": "journaling",
+    "duration_minutes": 7,
+    "difficulty": "easy",
+    "tags": ["overthinking", "stress", "clarity"],
+    "description": "Empty your mind by writing everything running through your head.",
+    "steps": [
+      "Write continuously for 3–5 minutes.",
+      "Do not censor or correct.",
+      "Let thoughts flow naturally.",
+      "Stop when you feel mental space opening.",
+      "Read and underline any patterns if you want."
+    ]
+  },
+  {
+    "_id": "journaling-3",
+    "title": "Emotion Labeling",
+    "type": "journaling",
+    "duration_minutes": 6,
+    "difficulty": "medium",
+    "tags": ["self-awareness", "emotions"],
+    "description": "Labeling emotions reduces intensity and increases clarity.",
+    "steps": [
+      "Write what you are feeling right now.",
+      "Assign each feeling a label (sadness, fear, anger).",
+      "Describe where you feel it in your body.",
+      "Write why you think it appeared.",
+      "Close with one supportive thought."
+    ]
+  },
+  {
+    "_id": "journaling-4",
+    "title": "Positive Affirmation Writing",
+    "type": "journaling",
+    "duration_minutes": 5,
+    "difficulty": "easy",
+    "tags": ["self-esteem", "confidence"],
+    "description": "Write affirming statements to strengthen self-worth.",
+    "steps": [
+      "Write 3 things you handled well today.",
+      "Write 3 personal strengths.",
+      "Write one affirmation you want to repeat.",
+      "Say the affirmation out loud once.",
+      "Keep it somewhere visible."
+    ]
+  },
+  {
+    "_id": "journaling-5",
+    "title": "Goal Clarity Journaling",
+    "type": "journaling",
+    "duration_minutes": 10,
+    "difficulty": "medium",
+    "tags": ["motivation", "clarity", "planning"],
+    "description": "Clarify your goals to reduce uncertainty and stress.",
+    "steps": [
+      "Write your main goal for this week.",
+      "Break it into 3 small steps.",
+      "Write the first step you can take today.",
+      "Identify one obstacle.",
+      "Write how you plan to overcome it."
+    ]
+  }
+]

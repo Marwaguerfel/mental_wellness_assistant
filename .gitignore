@@ -1,0 +1,36 @@
+# Python envs
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node/JS
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Builds
+dist/
+build/
+.next/
+out/
+
+# ML models (example)
+ml_service/models/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+
+# Env files
+.env
+.env.*
+backend/.env
+backend/.env.*
+
