@@ -25,7 +25,7 @@ type ChatResponse = {
   risk_flag: boolean;
 };
 
-type RecognitionType = SpeechRecognition | null;
+type RecognitionType = any;
 
 export default function Chat() {
   const [sessions, setSessions] = useState<ChatSession[]>([]);
@@ -51,7 +51,7 @@ export default function Chat() {
       return;
     }
 
-    const recognition: SpeechRecognition = new SpeechRecognition();
+    const recognition: any = new SpeechRecognition();
     recognition.lang = "en-US";
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
@@ -59,7 +59,7 @@ export default function Chat() {
     recognition.onstart = () => setIsListening(true);
     recognition.onend = () => setIsListening(false);
     recognition.onerror = () => setIsListening(false);
-    recognition.onresult = (event) => {
+    recognition.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript;
       setInput((prev) => (prev ? prev + " " + transcript : transcript));
     };

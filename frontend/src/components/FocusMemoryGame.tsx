@@ -35,9 +35,7 @@ export default function FocusMemoryGame() {
 
   const initGame = () => {
     const selectedIcons = ICONS.slice(0, pairsCount);
-    const deck = shuffleArray(
-      selectedIcons.concat(selectedIcons).map((icon, index) => ({ id: index, icon }))
-    );
+    const deck = shuffleArray(selectedIcons.concat(selectedIcons).map((icon, index) => ({ id: index, icon })));
     setCards(deck);
     setFlipped([]);
     setMatched([]);
@@ -61,9 +59,7 @@ export default function FocusMemoryGame() {
       setIsRunning(false);
       return;
     }
-    const interval = setInterval(() => {
-      setTimeLeft((t) => t - 1);
-    }, 1000);
+    const interval = setInterval(() => setTimeLeft((t) => t - 1), 1000);
     return () => clearInterval(interval);
   }, [isRunning, timeLeft, gameOver]);
 
@@ -90,9 +86,7 @@ export default function FocusMemoryGame() {
         setScore((s) => s + 100 * combo);
         setCombo((c) => c + 1);
       } else {
-        setTimeout(() => {
-          setFlipped([]);
-        }, 600);
+        setTimeout(() => setFlipped([]), 600);
         setCombo(1);
       }
     }
@@ -101,19 +95,12 @@ export default function FocusMemoryGame() {
   useEffect(() => {
     if (cards.length > 0 && matched.length === cards.length) {
       setIsRunning(false);
-      setTimeout(() => {
-        setGameOver(true);
-      }, 500);
+      setTimeout(() => setGameOver(true), 500);
     }
   }, [matched, cards]);
 
-  const handleNextLevel = () => {
-    setLevel((l) => Math.min(l + 1, 3));
-  };
-
-  const handleRestart = () => {
-    initGame();
-  };
+  const handleNextLevel = () => setLevel((l) => Math.min(l + 1, 3));
+  const handleRestart = () => initGame();
 
   const timePercent = Math.max(0, Math.min(100, (timeLeft / baseTime) * 100));
 
@@ -122,9 +109,7 @@ export default function FocusMemoryGame() {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-lg font-semibold text-[#3f3a64]">Focus Memory</h2>
-          <p className="text-xs text-slate-500">
-            Match the pairs to train focus. Higher levels = more cards & less time.
-          </p>
+          <p className="text-xs text-slate-500">Match the pairs to train focus. Higher levels = more cards & less time.</p>
         </div>
         <div className="flex flex-col items-end text-xs">
           <span className="font-semibold text-[#3f3a64]">Level {level}/3</span>
@@ -152,11 +137,7 @@ export default function FocusMemoryGame() {
         </div>
       </div>
 
-      <div
-        className={`grid gap-3 mb-4 ${
-          pairsCount === 4 ? "grid-cols-4" : pairsCount === 6 ? "grid-cols-4" : "grid-cols-4"
-        }`}
-      >
+      <div className="grid grid-cols-4 gap-3 mb-4">
         {cards.map((card, index) => {
           const isFlipped = flipped.includes(index) || matched.includes(index);
           return (
@@ -189,13 +170,13 @@ export default function FocusMemoryGame() {
                 Next Level
               </button>
             ) : (
-              <span className="text-slate-500">Max level reached. You&apos;re a focus master 💪</span>
+              <span className="text-slate-500">Max level reached. You&apos;re a focus master.</span>
             )}
           </div>
         )}
 
         {gameOver && matched.length !== cards.length && (
-          <span className="text-red-500 text-xs">Time&apos;s up. Try again calmly 🕊️</span>
+          <span className="text-red-500 text-xs">Time&apos;s up. Try again calmly.</span>
         )}
       </div>
     </div>

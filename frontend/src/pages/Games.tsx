@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { apiFetch } from "../api/client";
@@ -17,7 +17,7 @@ function SceneWrapper({ children }: { children: React.ReactNode }) {
 }
 
 function BreathingSphere() {
-  const mesh = useRef<any>();
+  const mesh = useRef<any>(null);
   const start = useRef<number>(Date.now());
 
   useFrame(() => {
@@ -58,131 +58,8 @@ function FocusGame3D() {
   );
 }
 
-type CubeInfo = {
-  id: number;
-  position: [number, number, number];
-  color: string;
-};
-
-const MEMORY_CUBES: CubeInfo[] = [
-  { id: 0, position: [-2, 0, 0], color: "#38bdf8" },
-  { id: 1, position: [0, 0, 0], color: "#a855f7" },
-  { id: 2, position: [2, 0, 0], color: "#f97316" },
-];
-
-type MemoryState = "showing" | "input" | "done";
-
-function MemoryCube({ info, isActive, onClick }: { info: CubeInfo; isActive: boolean; onClick: () => void }) {
-  const mesh = useRef<any>();
-
-  useFrame(() => {
-    if (mesh.current) {
-      mesh.current.rotation.y += 0.01;
-      mesh.current.rotation.x += 0.005;
-      mesh.current.scale.setScalar(isActive ? 1.3 : 1);
-    }
-  });
-
-  return (
-    <mesh ref={mesh} position={info.position} onClick={onClick} castShadow receiveShadow>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial
-        color={info.color}
-        emissive={isActive ? info.color : "#000000"}
-        emissiveIntensity={isActive ? 0.9 : 0.2}
-        roughness={0.3}
-        metalness={0.4}
-      />
-    </mesh>
-  );
-}
-
-function MemoryGame3D() {
-  const [sequence, setSequence] = useState<number[]>([]);
-  const [highlightIndex, setHighlightIndex] = useState<number>(-1);
-  const [state, setState] = useState<MemoryState>("showing");
-  const [userInput, setUserInput] = useState<number[]>([]);
-  const [message, setMessage] = useState<string>("Watch the cubes light up in order...");
-  const [canRestart, setCanRestart] = useState<boolean>(false);
-
-  useEffect(() => {
-    const seq = Array.from({ length: 3 }, () => Math.floor(Math.random() * MEMORY_CUBES.length));
-    setSequence(seq);
-    setState("showing");
-    setUserInput([]);
-    setCanRestart(false);
-    setMessage("Watch the cubes light up in order...");
-
-    let idx = 0;
-    const interval = setInterval(() => {
-      setHighlightIndex(seq[idx]);
-      idx += 1;
-      if (idx > seq.length) {
-        clearInterval(interval);
-        setTimeout(() => {
-          setHighlightIndex(-1);
-          setState("input");
-          setMessage("Now click the cubes in the same order.");
-        }, 600);
-      }
-    }, 800);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleCubeClick = (id: number) => {
-    if (state !== "input") return;
-    const nextInput = [...userInput, id];
-    setUserInput(nextInput);
-
-    const expected = sequence[nextInput.length - 1];
-    if (id !== expected) {
-      setMessage("Not quite. That was a different order. You can restart.");
-      setState("done");
-      setCanRestart(true);
-      return;
-    }
-
-    if (nextInput.length === sequence.length) {
-      setMessage("Great job! You matched the sequence 🎉");
-      setState("done");
-      setCanRestart(true);
-    }
-  };
-
-  const restart = () => window.location.reload();
-
-  return (
-    <div className="h-80 rounded-xl overflow-hidden bg-slate-900 relative">
-      <SceneWrapper>
-        {MEMORY_CUBES.map((cube) => (
-          <MemoryCube
-            key={cube.id}
-            info={cube}
-            isActive={highlightIndex === cube.id}
-            onClick={() => handleCubeClick(cube.id)}
-          />
-        ))}
-      </SceneWrapper>
-      <div className="absolute bottom-2 inset-x-2 text-xs text-slate-100 bg-black/40 px-3 py-2 rounded-lg">
-        <div className="flex justify-between items-center gap-3">
-          <span>{message}</span>
-          {canRestart && (
-            <button
-              className="border border-slate-300 text-slate-100 px-2 py-1 rounded text-[11px] hover:bg-slate-700"
-              onClick={restart}
-            >
-              Restart
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function FloatingShape({ position, color }: { position: [number, number, number]; color: string }) {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   const speed = useRef<number>(0.3 + Math.random() * 0.4);
   const phase = useRef<number>(Math.random() * Math.PI * 2);
 
@@ -198,13 +75,7 @@ function FloatingShape({ position, color }: { position: [number, number, number]
   return (
     <mesh ref={ref} position={position} castShadow receiveShadow>
       <icosahedronGeometry args={[0.6, 1]} />
-      <meshStandardMaterial
-        color={color}
-        emissive={color}
-        emissiveIntensity={0.4}
-        roughness={0.4}
-        metalness={0.3}
-      />
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.4} roughness={0.4} metalness={0.3} />
     </mesh>
   );
 }
@@ -271,9 +142,9 @@ export default function Games() {
 
   return (
     <div className="mt-4 space-y-4">
-      <h1 className="text-lg font-semibold">Mind mini-games (3D)</h1>
+      <h1 className="text-lg font-semibold">Mind mini-games</h1>
       <p className="text-sm text-slate-500">
-        These playful 3D experiences are designed to help you focus, train your memory, and relax your nervous system.
+        These experiences are designed to help you focus, train your memory, and relax your nervous system.
       </p>
 
       <div className="text-xs bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-2 rounded-lg flex justify-between items-center">
@@ -288,9 +159,7 @@ export default function Games() {
               )}
             </>
           )}
-          {!loadingSuggestion && !suggestion && (
-            <span>Start a conversation in the chat to get a suggestion.</span>
-          )}
+          {!loadingSuggestion && !suggestion && <span>Start a conversation in the chat to get a suggestion.</span>}
         </div>
         {suggestion && (
           <button

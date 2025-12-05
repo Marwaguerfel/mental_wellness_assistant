@@ -1,7 +1,8 @@
 import { Navigate, useLocation } from "react-router-dom";
+import type { ReactNode } from "react";
 
 type Props = {
-  children: JSX.Element;
+  children: ReactNode;
 };
 
 export default function RequireAuth({ children }: Props) {
