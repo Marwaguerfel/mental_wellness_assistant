@@ -38,6 +38,7 @@ export default function Chat() {
   const [voiceMode, setVoiceMode] = useState<"on" | "off">("on");
   const [speechAvailable, setSpeechAvailable] = useState(false);
   const [isListening, setIsListening] = useState(false);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
   const [botMood, setBotMood] = useState<BotMood>("neutral");
 
   const recognitionRef = useRef<RecognitionType>(null);
@@ -48,6 +49,7 @@ export default function Chat() {
     const SpeechRecognition = anyWindow.SpeechRecognition || anyWindow.webkitSpeechRecognition;
     if (!SpeechRecognition) {
       setSpeechAvailable(false);
+      setVoiceError("Voice input is not supported in this browser. Try Chrome/Edge on desktop.");
       return;
     }
 
@@ -58,7 +60,10 @@ export default function Chat() {
 
     recognition.onstart = () => setIsListening(true);
     recognition.onend = () => setIsListening(false);
-    recognition.onerror = () => setIsListening(false);
+    recognition.onerror = (event: any) => {
+      setIsListening(false);
+      setVoiceError(event?.error === "not-allowed" ? "Microphone permission was denied." : "Voice input error. Try again.");
+    };
     recognition.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript;
       setInput((prev) => (prev ? prev + " " + transcript : transcript));
@@ -329,11 +334,15 @@ export default function Chat() {
 
   const toggleListening = () => {
     const recog = recognitionRef.current;
-    if (!speechAvailable || !recog) return;
+    if (!speechAvailable || !recog) {
+      setVoiceError("Voice input unavailable. Please check browser support and mic permissions.");
+      return;
+    }
     if (isListening) {
       recog.stop();
     } else {
       recog.start();
+      setVoiceError(null);
     }
   };
 
@@ -489,6 +498,7 @@ export default function Chat() {
         </div>
 
         {loading && <p className="mt-1 text-[11px] text-slate-400">Thinking about a supportive response.</p>}
+        {voiceError && <p className="mt-1 text-[11px] text-red-500">{voiceError}</p>}
       </div>
     </div>
   );

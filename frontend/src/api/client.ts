@@ -2,7 +2,8 @@
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:8001";
 
 function getToken() {
-  return localStorage.getItem("access_token");
+  // Prefer access_token, but fall back to token if that’s what the backend issued.
+  return localStorage.getItem("access_token") || localStorage.getItem("token");
 }
 
 export async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
